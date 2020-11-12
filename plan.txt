@@ -1,0 +1,19 @@
+What do you want Felix to be able to do...
+
+Mathematic Operations:
+Addition
+Subtraction
+Multiplication
+Division
+--------
+Exponential
+Roots
+Logarithmic
+Natural Logarithmic
+--------
+PI
+Eulers Number
+--------
+Complex
+--------
+Fractions
