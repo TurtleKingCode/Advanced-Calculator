@@ -1,25 +1,34 @@
-test = (4+5)*100 + 50 / (2 * 5)
-console.log(test)
+// var functions = require('./Felix_Stuff/functions');
 
 function print(text) {
 	console.log(text)
 }
 
-print('test')
+// console.log(Math.E);
+// console.log(Math.PI)
 
-(function() {
-    var someThings = ...;
+Math.factorial = function(num) {
+	var s = 1;
+	for (n = 1; n < num + 1; n++) {s *= n}
+	return s
+}
 
-    ...
+mathArray = ['3.5', '+', '5', '^', '2'];
+mathSolve = [];
 
-    module.exports.getSomeThings = function() {
-        return someThings();
-    }
-
-}());
-
-// main.js
-
-var things = require("someThings");
-...
-doSomething(things.getSomeThings());
+for (b in mathArray) {
+	c = mathArray[b];
+	if (c == '!') {
+		d = mathSolve.pop();
+		c = `Math.factorial(${d})`
+	} else if (c == '^') {
+		d = mathSolve.pop();
+		e = mathArray[mathArray.indexOf(c)+1];
+		mathArray.splice(mathArray.indexOf(e), 1);
+		console.log(e);
+		c = `Math.pow(${d}, ${e})`
+	}
+	mathSolve.push(c);
+}
+console.log(mathSolve);
+console.log(eval(mathSolve.join('')));
