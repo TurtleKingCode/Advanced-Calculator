@@ -1,0 +1,30 @@
+{
+  "name": "Advanced-Calculator",
+  "version": "1.0.0",
+  "description": "Biweekly Coding Challenge 3: With the Help of Felix... You can get your math homework done",
+  "main": "index.js",
+  "dependencies": {
+    "algebra.js": "^0.2.6",
+    "math": "^0.0.3",
+    "mathjs": "^8.0.1",
+    "new": "^0.1.1",
+    "prompt": "^1.0.0",
+    "readline": "^1.3.0",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TurtleKingCode/Advanced-Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TurtleKingCode/Advanced-Calculator/issues"
+  },
+  "homepage": "https://github.com/TurtleKingCode/Advanced-Calculator#readme"
+}

@@ -11,9 +11,62 @@ Roots
 Logarithmic
 Natural Logarithmic
 --------
+Converstion:
+distance, mass, capasity, time, degrees
+in - cm
+metric - metric
+customary - customary
+[deg, rad]
+[in, ft, yd, mi]
+[mm, cm, dm, m, dcm, hm, km]
+[ts, tbs, oc, c, pt, qt, g]
+[ml, cl, dl, l, dcl, hl, kl]
+[oz, lb, ton]
+[mg, cg, dg, l, dcg, hg, kg, mton]
+[ms, sec, min, hr, day, week]
+--------
 PI
 Eulers Number
 --------
-Complex
+Complex -- Maybe
 --------
-Fractions
+Fractions -- Maybe
+--------------------------
+Math.G
+Math.conv
+Math.factorial
+------------------
+Math would always go though an examination process wheter we use Basic or Quadralateral
+Basic - Solves the simplest of math
+Trig:
+cos/sin/tan
+acos/asin/atan
+cosh/sinh/tanh
+acosh/asinh/atanh
+[a, c, h, i, n, o, s, t]
+
+
+Basic-Algebra - 
+Quadralateral
+Polynomial
+General - Solves all math, but little focus on other things
+
+
+1. Get Math
+2. Examine Math
+3. Determine Action
+4. Chop Math
+5. Configure Math
+6. Solve Math
+7. Reveal Math
+8. Repeat Process
+----------------------------------
+Basic:
++-*/()
+
+
+Scientific:
+sin, cos, tan, pi, e, log, sqrt, cbrt, 3 root(3)
+^!%
+
+
