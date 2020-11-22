@@ -124,7 +124,7 @@ class calcSystem {
 			clss: 'trig'
 		};
 		this.operators = {
-			txt: ['**', '!', '+', '-', '*', '/', '%'],
+			txt: ['**', '!', '+', '-', '*', '/', '%', 'mod'],
 			funcs: ['factorial', 'Math.pow'],
 			clss: 'operator'
 		};
@@ -139,7 +139,7 @@ class calcSystem {
 			clss: 'char'
 		};
 		this.funcs = {
-			txt: ['factorial', 'root', 'log', 'ln', 'sqrt', 'cbrt', 'prcnt'],
+			txt: ['factorial', 'root', 'log', 'ln', 'sqrt', 'cbrt', 'prcnt', 'abs', 'ceil', 'floor', 'round', 'negate', 'trunc'],
 			funcs: ['Math.factorial', 'Math.nthroot', 'Math.nthroot'],
 			clss: 'func'
 		};

@@ -10,6 +10,13 @@ function setup() {
 	prcnt = function(num, base = 100) {
 		return (num/base);
 	}
+	abs = Math.abs;
+	mod = function() {return '%'};[mod, ceil, floor, round, negate, trunc]
+	ceil = Math.ceil;
+	floor = Math.floor;
+	round = Math.round;
+	negate = function(x) {return -x};
+	trunc = Math.trunc; 
 	log = function (base, val = undefined) {
 		if (val == undefined) {
 			return Math.log(base);
