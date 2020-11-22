@@ -139,7 +139,7 @@ class calcSystem {
 			clss: 'char'
 		};
 		this.funcs = {
-			txt: ['factorial', 'root', 'log', 'ln', 'sqrt', 'cbrt', 'prcnt', 'abs', 'ceil', 'floor', 'round', 'negate', 'trunc'],
+			txt: ['factorial', 'root', 'log', 'ln', 'sqrt', 'cbrt', 'percent', 'abs', 'ceil', 'floor', 'round', 'negate', 'trunc'],
 			funcs: ['Math.factorial', 'Math.nthroot', 'Math.nthroot'],
 			clss: 'func'
 		};
@@ -158,6 +158,14 @@ class calcSystem {
 			}
 		}
 		return mtch;
+	}
+	hideE = function(str) {
+		str = str.replace(/e/g, '\~');
+		return str;
+	}
+	showE = function(str) {
+		str = str.replace(/\~/g, 'e');
+		return str;
 	}
 	backCheck(symbol, func, mthArray, clssArray) {
 		while (mthArray.includes(symbol)) {
@@ -221,7 +229,7 @@ class calcSystem {
 							.replace(/\(/g, ' ( ')
 							.replace(/\)/g, ' ) ')
 							.replace(/,/g, ' , ');
-		var termList = this.vars.txt.concat(this.trig.txt).concat(this.funcs.txt);
+		var termList = this.trig.txt.concat(this.funcs.txt);
 		for (var thn in termList) {
 			thn = termList[thn];
 			var re = new RegExp(`${thn}`, 'g');
@@ -238,7 +246,7 @@ class calcSystem {
 	}
 	configureMath(choppedMath) { // Set up math in a way that solveMath can handle
 		let factorialCheck = this.backCheck('!', 'factorial', choppedMath.mathArray, choppedMath.clssArray);
-		let percentCheck = this.backCheck('%', 'prcnt', factorialCheck.mathArray, factorialCheck.clssArray);
+		let percentCheck = this.backCheck('%', 'percent', factorialCheck.mathArray, factorialCheck.clssArray);
 
 		/*
 		modifier

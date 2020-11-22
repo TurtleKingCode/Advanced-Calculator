@@ -5,13 +5,13 @@ function setup() {
 	e = Math.E;
 	sqrt = Math.sqrt;
 	cbrt = Math.cbrt;
-	root = Math.root; nthroot = root; nth_root = root;
+	root = Math.root; nthroot = root; nth_root = root
 	factorial = Math.factorial;
-	prcnt = function(num, base = 100) {
+	percent = function(num, base = 100) {
 		return (num/base);
 	}
 	abs = Math.abs;
-	mod = function() {return '%'};[mod, ceil, floor, round, negate, trunc]
+	mod = function() {return '%'};
 	ceil = Math.ceil;
 	floor = Math.floor;
 	round = Math.round;
