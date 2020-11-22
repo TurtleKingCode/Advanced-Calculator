@@ -1,7 +1,7 @@
 const readline = require('readline-sync');
 prompt = readline.question;
 const setTrigFuncs = require('./settup');
-var strings = []
+
 class Bot {
 	constructor(name, description) {
 		this.name = name;
@@ -23,7 +23,7 @@ class Bot {
 		user.name = prompt("You can call me: ");
 	}
 	examineMath(mathString) { // Scan math for human errors
-		let str = mathString.replace(/ /g, '');
+		let str = mathString.replace(/ /g, '').toLowerCase();
 		let numList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 		let math = false;
 		for (var nums in numList) {
@@ -54,9 +54,9 @@ class Bot {
 
 		this.examinedMath = str;
 	}
-	determineAction(examinedMath) { // Determin wether Basic or Quadratic
+/*	determineAction(examinedMath) { // Determin wether Basic or Quadratic
 		this.determined = examinedMath;
-	}
+	}*/
 	revealSolution(solution) { // Print out Solution
 		console.log(solution);
 		return solution;
@@ -95,88 +95,145 @@ class calcSystem {
 		this.configuredMath;
 		this.choppedMath;
 		this.vars = {
-			txt:['pi', 'e'],
-			func:['Math.PI', 'Math.E'],
-			id: 'var'
+			txt:['pi', 'e', 'tau'],
+			func:['Math.PI', 'Math.E', 'Math.PI*2'],
+			clss: 'var'
 		};
 		this.trig = {
 			txt: ['sin', 'cos', 'tan', 'asin', 'acos', 'atan', 'sinh', 'cosh', 'tanh', 'asinh', 'acosh', 'atanh'],
 			func: ['Math.sin', 'Math.cos', 'Math.tan', 'Math.asin', 'Math.acos', 'Math.atan', 'Math.sinh', 'Math.cosh', 'Math.tanh', 'Math.asinh', 'Math.acosh', 'Math.atanh'],
-			id: 'trig'
+			clss: 'trig'
 		};
-		this.symbols = {
-			txt: ['^', '!'],
+		this.operators = {
+			txt: ['**', '!', '+', '-', '*', '/', '%'],
 			funcs: ['factorial', 'Math.pow'],
-			id: 'symbol'
+			clss: 'operator'
 		};
 		this.numbers = {
 			txt: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
 			funcs: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-			id: 'number'
+			clss: 'number'
 		};
 		this.chars = {
 			txt: ['(', ')'],
 			funcs: undefined,
-			id: 'char'
+			clss: 'char'
+		};
+		this.funcs = {
+			txt: ['factorial', 'root', 'log', 'sqrt', 'cbrt', 'prcnt'],
+			funcs: ['Math.factorial', 'Math.nthroot', 'Math.nthroot'],
+			clss: 'func'
+		};
+		this.comma = {
+			txt: [','],
+			funcs: [','],
+			clss: 'comma'
+		};
+	}
+	match = function(array, re) {
+		var mtch = [];
+		for (var i in array) {
+			i = array[i];
+			if (i == re) {
+				mtch.push(i);
+			}
 		}
+		return mtch;
 	}
-	mathFunctions() {
+	backCheck(symbol, func, mthArray, clssArray) {
+		while (mthArray.includes(symbol)) {
+			var index = mthArray.indexOf(symbol);
+			var numIndex = index - 1;
+			var prevNum = mthArray[numIndex];
+			console.log(prevNum);
+			if (clssArray[numIndex] == 'number' || clssArray[numIndex] == 'var') {
+				mthArray.splice(numIndex, 2, `${func}(${prevNum})`);
+			} else if (prevNum == ')') {
+				console.log(true);
+				var parVar = 1;
+				var bgTxt = [];
+				bgTxt.unshift(prevNum);
+				numIndex--;
+				prevNum = mthArray[numIndex];
+				do {
+					if (prevNum == ')') {
+						parVar++;
+					} else if (prevNum == '(') {
+						parVar--;
+					}
+					bgTxt.unshift(prevNum);
+					numIndex--;
+					prevNum = mthArray[numIndex];
+				} while(parVar > 0);
+				var mthStr = mthArray.join('');
+				var choppedMath = this.chopMathString(mthStr);
+				mthArray = choppedMath.mathArray;
+				clssArray = choppedMath.clssArray;
+				console.log(mthArray);
+				console.log(clssArray);
+				if (clssArray[numIndex] == 'func' || clssArray[numIndex] == 'trig') {
+					bgTxt.unshift(prevNum);
+				} else {numIndex++;}
+				console.log(numIndex);
+				mthArray.splice(numIndex, bgTxt.length + 1, `${func}(${bgTxt.join('')})`);
+			}
+			var mthStr = mthArray.join('');
+			var choppedMath = this.chopMathString(mthStr);
+			mthArray = choppedMath.mathArray;
+			clssArray = choppedMath.clssArray;
+		}
+		var mthStr = mthArray.join('');
+		var choppedMath = this.chopMathString(mthStr);
+		return choppedMath;
 	}
-	chopMathString(determinedAction) {
-		let str = determinedAction.replace(/\=/g, '');
+	chopMathString(examinedMath) {
+		let str = examinedMath.replace(/\=/g, '').replace(/nthroot/g, 'root').replace(/nth_root/g, 'root');
 		var strList;
-		var idList;
+		var clssList = [];
+		// clssList = Array(clssList);
 		str = str.replace(/ /g, '')
-							.replace(/\+/g, ',+,')
-							.replace(/\-/g, ',-,')
-							.replace(/\*/g, ',*,')
-							.replace(/\//g, ',/,')
-							.replace(/\^/g, ',^,')
-							.replace(/!/g, ',!,')
-							.replace(/\(/g, ',(,')
-							.replace(/\)/g, ',),');
-		var termList = this.vars.txt.concat(this.trig.txt);
+							.replace(/\+/g, ' + ')
+							.replace(/\-/g, ' - ')
+							.replace(/\*/g, ' * ')
+							.replace(/\//g, ' / ')
+							.replace(/\^/g, ' ** ')
+							.replace(/\%/g, ' % ')
+							.replace(/!/g, ' ! ')
+							.replace(/\(/g, ' ( ')
+							.replace(/\)/g, ' ) ')
+							.replace(/,/g, ' , ');
+		var termList = this.vars.txt.concat(this.trig.txt).concat(this.funcs.txt);
 		for (var thn in termList) {
 			thn = termList[thn];
 			var re = new RegExp(`${thn}`, 'g');
-			str = str.replace(re, `,${thn},`);
+			str = str.replace(re, ` ${thn} `);
 		}
-		str = str.replace(/,,/g, ',').replace(/,/g, ' ');
+		str = str.replace(/  /g, ' ');
 		str = str.trim();
 		strList = str.split(" ");
-		var type;
-		for (var term in strList) {
-			term = strList[term];
-			if(!isNaN(term)) {
-				type = this.numbers.id;
-				console.log(type);
-				break;
-			} else if (this.var.txt.includes(term)) {
-				type = this.var.id;
-				console.log(type);
-				break;
-			} else if (this.trig.txt.includes(term)) {
-				type = this.trig.id;
-				console.log(type);
-				break;
-			} else if (this.symbols.txt.includes(term)) {
-				type = this.symbols.id;
-				console.log(type);
-				break;
-			} else if (this.chars.txt.includes(term)) {
-				type = this.chars.id;
-				console.log(type);
-				break;
-			}
-			idList = idList.push(type);
-		}
-		console.log(idList);
-		console.log(type);
-		console.log("This is the str --->" + str);
-		this.choppedMath = str;
+		
+		clssList = setClss([this.vars, this.trig, this.operators, this.chars, this.funcs, this.comma], strList, this.numbers.clss);
+
+		this.choppedMath = {mathString: str, mathArray: strList, clssArray: clssList};
+		return this.choppedMath;
 	}
 	configureMath(choppedMath) { // Set up math in a way that solveMath can handle
-		this.configuredMath = choppedMath;
+		let factorialCheck = this.backCheck('!', 'factorial', choppedMath.mathArray, choppedMath.clssArray);
+		let percentCheck = this.backCheck('%', 'prcnt', factorialCheck.mathArray, factorialCheck.clssArray);
+
+		/*
+		modifier
+		array
+		function name
+		---
+		final Array
+		*/
+		let mathString = percentCheck.mathString;
+		let mathArray = percentCheck.mathArray;
+		let clssArray = percentCheck.clssArray;
+		console.log(factorialCheck);
+		console.log(percentCheck);
+		this.configuredMath = mathString;
 	}
 	solveMath(math = this.configuredMath) { // Actually solve the math
 		this.solution = eval(math);
@@ -203,9 +260,18 @@ function FelixCalculate() {
 	Felix.resetVariables();
 	System.resetVariables();
 	User.inputMath();
-	Felix.examineMath(User.enteredMath);
-	Felix.determineAction(Felix.examinedMath);
-	System.chopMathString(Felix.determined);
+	Felix.();
+}
+
+function Basic(enteredMath) {
+	Felix.revealSolution(enteredMath);
+	endLine();
+	FelixCalculate();
+}
+
+function Scientific(enteredMath) {
+	Felix.examineMath(enteredMath);
+	System.chopMathString(Felix.examinedMath);
 	System.configureMath(System.choppedMath);
 	System.solveMath(System.configuredMath);
 	Felix.revealSolution(System.solution);
@@ -215,6 +281,24 @@ function FelixCalculate() {
 
 function endLine() {
 	console.log('-------------------------------------\n\n')
+}
+
+function setClss(arrays, array, numClss) {
+	clss = [];
+	for (var items in array) {
+		items = array[items];
+		if (!isNaN(items)) {
+			clss.push(numClss);
+		} else {
+			for (var arr in arrays) {
+				arr = arrays[arr];
+				if (arr.txt.includes(items)){
+					clss.push(arr.clss);
+				}
+			}
+		}
+	}
+	return clss;
 }
 
 // -------------------------

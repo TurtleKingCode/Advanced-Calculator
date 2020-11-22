@@ -12,3 +12,6 @@ str = str.trim();
 var strlst = str.split(' ');
 console.log(strlst);
 console.log(str);
+/*
+YOU HAVE TO FIX THE FACT THAT WE CAN ONLY HANDLE ONE FACTORIAL
+*/

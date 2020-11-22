@@ -70,3 +70,41 @@ sin, cos, tan, pi, e, log, sqrt, cbrt, 3 root(3)
 ^!%
 
 
+
+
+Things you must remember to do in the very end:
+
+- There is a number list that you acutally don't need
+- You have to remove the id name for the variables
+- 
+
+
+
+1. Notice that it exists
+2. Find it's location, and log it.
+3. Move to the left and log what is there
+4. If Number
+	a. Replace that location with "factorial(Number)"
+5. Else if ')'
+	a. Make an Array
+	b. Set up a variable to keep track of things
+	c. Put that into the Array
+	d. Move to the left
+	e. Check what it is
+	f. If it is ')'
+		a. Increment the value
+	g. If it is '('
+		a. Decrement the value
+	h. Else
+		a. Continue with ste c, d, e down
+	i. continue until variable is empty
+	j. Once empty, move to the left and check what that is
+	k. If it is a function
+		a. Add it to the Array
+	l. If it is not a function
+		a. Do nothing important
+	m. Go now to that index location
+	n. Remove everything worth the length of your Array plus one
+	o. Replace it with everything in that Array
+6. Now with that done... Chop that array
+7. Repeat everything until there are none left
