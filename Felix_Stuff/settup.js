@@ -17,6 +17,7 @@ function setup() {
 				return Math.log(val) / Math.log(base);
 			}
 	}
+	ln = Math.log;
 	if (radians === true) {
 		sin = Math.sin;
 		cos = Math.cos;

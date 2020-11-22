@@ -135,3 +135,16 @@ Array.prototype.match = function (re) {
 
 var arr = [1, 2, 3, 4, 10, 2, 1, 6, 4, 3, 2, 2, 4, 3, 6, 8, 45, 54, 1];
 // console.log(arr.match(2));
+Calculators = [
+			{
+				name: 'basic',
+				func: 'Basic'
+			},
+			{
+				name: 'sci',
+				func: 'Scientific'
+			}
+		];
+
+names = Calculators.map(x => x.func);
+console.log(names);

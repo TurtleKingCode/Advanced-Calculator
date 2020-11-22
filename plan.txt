@@ -75,7 +75,6 @@ sin, cos, tan, pi, e, log, sqrt, cbrt, 3 root(3)
 Things you must remember to do in the very end:
 
 - There is a number list that you acutally don't need
-- You have to remove the id name for the variables
 - 
 
 
@@ -108,3 +107,14 @@ Things you must remember to do in the very end:
 	o. Replace it with everything in that Array
 6. Now with that done... Chop that array
 7. Repeat everything until there are none left
+
+1. Basic }
+2. Scientific }
+3. Quadralateral
+4. Polynomial
+5. Conversion
+6. Time
+7. Help System
+8. Random Number Generator
+9. Matrix Calculator
+--- Maybe a Time Calculator ---

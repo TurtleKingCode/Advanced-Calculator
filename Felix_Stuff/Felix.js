@@ -2,6 +2,7 @@ const readline = require('readline-sync');
 prompt = readline.question;
 const setTrigFuncs = require('./settup');
 
+
 class Bot {
 	constructor(name, description) {
 		this.name = name;
@@ -11,6 +12,24 @@ class Bot {
 		this.errors = {
 			noNumbers: "Felix_Error (noNumbers): This doesn't look like math to me"
 		};
+		this.Calculators = [
+			{
+				name: 'basic',
+				func: Basic,
+				description: 'Basic: My Basic Calculator is able to calculate the most basic of computations, such as addition, subtraction multiplication and division.  It can also deal with parentheses (no squar or curly brackets allowed, those mess me up).  And it can compute exponents.  (Exponents are denoted with the caret symbol (\'^\') and for those of you who program, two asterisk symbols (\'**\').',
+				functionality: 'For those of you who want to know how my Basic Calculator work... I\'ll tell you.  The Basic Calculator uses the replace method to switch the caret symbosl with two asterisks and then trows the string into the eval function... Easy right?',
+				operations: '(+) Addition, (-) Subtraction, (*) Multiplication, (/) Division, (^ or **) Exponents [Example: 3**2 and 3^2 are equal to Three Squared].'
+			},
+			{
+				name: 'sci',
+				func: Scientific,
+				description: 'Scientific: My Scientific Calculator is able to calculate just about anything you see on a normal Scientific Calculater.  It can handle all the trig finctions (including the inverses of the trig functions, the hyperbolic trig functions and their inverses).  It can also handle logrithms as well as the natural log.  It can work with Squar Roots, Cube Roots, and all other types of Roots you wish.  It supports the variables PI, TAU, and Euler\'s Number.  It works with Factorials and it can represent a number as a percentage.'
+			}
+		];
+		this.calcName = this.Calculators.map(x => x.name);
+		this.calcFuncs = this.Calculators.map(x => x.func);
+		this.defaultCalculator = this.Calculators[1];
+		this.chosenCalculator;
 	}
 	intro() {
 		console.log(`Hi, my name is ${this.name}.\n\n${this.description}`);
@@ -23,12 +42,12 @@ class Bot {
 		user.name = prompt("You can call me: ");
 	}
 	examineMath(mathString) { // Scan math for human errors
-		let str = mathString.replace(/ /g, '').toLowerCase();
-		let numList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-		let math = false;
-		for (var nums in numList) {
-			if (str.includes(numList[nums])) {
-				math = true;
+		var str = mathString.replace(/ /g, '').toLowerCase();
+		var math = false;
+		for (var s in str.split('')) {
+			s = str[s];
+			if (!isNaN(s)) {
+				math  = true;
 				break;
 			}
 		}
@@ -54,9 +73,9 @@ class Bot {
 
 		this.examinedMath = str;
 	}
-/*	determineAction(examinedMath) { // Determin wether Basic or Quadratic
-		this.determined = examinedMath;
-	}*/
+	determineAction(enteredMath) { // Determin wether Basic or Quadratic
+		this.determined = enteredMath.replace(/ /g, '').toLowerCase();
+	}
 	revealSolution(solution) { // Print out Solution
 		console.log(solution);
 		return solution;
@@ -120,7 +139,7 @@ class calcSystem {
 			clss: 'char'
 		};
 		this.funcs = {
-			txt: ['factorial', 'root', 'log', 'sqrt', 'cbrt', 'prcnt'],
+			txt: ['factorial', 'root', 'log', 'ln', 'sqrt', 'cbrt', 'prcnt'],
 			funcs: ['Math.factorial', 'Math.nthroot', 'Math.nthroot'],
 			clss: 'func'
 		};
@@ -260,23 +279,24 @@ function FelixCalculate() {
 	Felix.resetVariables();
 	System.resetVariables();
 	User.inputMath();
-	Felix.();
-}
-
-function Basic(enteredMath) {
-	Felix.revealSolution(enteredMath);
+	Felix.determineAction(User.enteredMath);
+	Felix.defaultCalculator.func(Felix.determined);
 	endLine();
 	FelixCalculate();
 }
 
-function Scientific(enteredMath) {
-	Felix.examineMath(enteredMath);
+function Basic(basic) {
+	basic = basic.replace(/\^/g, '**');
+	console.log(eval(basic));
+	return eval(basic);
+}
+
+function Scientific(science) {
+	Felix.examineMath(science);
 	System.chopMathString(Felix.examinedMath);
 	System.configureMath(System.choppedMath);
 	System.solveMath(System.configuredMath);
 	Felix.revealSolution(System.solution);
-	endLine();
-	FelixCalculate();
 }
 
 function endLine() {
