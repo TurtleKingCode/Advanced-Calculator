@@ -2,6 +2,10 @@ const readline = require('readline-sync');
 var algebra = require('algebra.js');
 prompt = readline.question;
 
+var Fraction = algebra.Fraction;
+var Expression = algebra.Expression;
+var Equation = algebra.Equation;
+
 function Linear(linear) {
 	var string = linear.replace(/ /g, '');
 	//If it has an equal sighn, shift everything to the left side of the array

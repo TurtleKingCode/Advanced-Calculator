@@ -7,7 +7,7 @@ var Fraction = algebra.Fraction;
 var Expression = algebra.Expression;
 var Equation = algebra.Equation;
 
-var Linear = require('./Calculators.js/Linear');
+var Linear = require('./Calculators/Linear.js')
 
 class Bot {
 	constructor(name, description) {
