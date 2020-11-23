@@ -7,7 +7,7 @@ Biweekly Coding Challenge 3: With the Help of Felix... You can get your math hom
 1. Felix
 2. Basic Calculator
 	a. Addition, Subtraction, Multiplication and Division
-3. Scientific Calculator
+3. Scientific Calculator<br/>
 	a. Trig Functions<br/>
 	b. Inverse of Trig Functions<br/>
 	c. Hyperbolic Trig Functions<br/>
@@ -19,7 +19,7 @@ Biweekly Coding Challenge 3: With the Help of Felix... You can get your math hom
 	i. Negation<br/>
 	j. Floor and Ceiling<br/>
 	k. Rounding<br/>
-4. Linear Calculator
+4. Linear Calculator<br/>
 	a. Accepting linear equations/expressions<br/>
 	b. Outputing Standard Form and Y-intercept Form<br/>
 	c. Outputing Slope and y-intercept<br/>
