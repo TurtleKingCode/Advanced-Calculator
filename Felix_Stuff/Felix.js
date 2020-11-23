@@ -1,7 +1,11 @@
 const readline = require('readline-sync');
-prompt = readline.question;
 const setTrigFuncs = require('./settup');
+var algebra = require('algebra.js');
+prompt = readline.question;
 
+var Fraction = algebra.Fraction;
+var Expression = algebra.Expression;
+var Equation = algebra.Equation;
 
 class Bot {
 	constructor(name, description) {
@@ -23,7 +27,12 @@ class Bot {
 			{
 				name: 'sci',
 				func: Scientific,
-				description: 'Scientific: My Scientific Calculator is able to calculate just about anything you see on a normal Scientific Calculater.  It can handle all the trig finctions (including the inverses of the trig functions, the hyperbolic trig functions and their inverses).  It can also handle logrithms as well as the natural log.  It can work with Squar Roots, Cube Roots, and all other types of Roots you wish.  It supports the variables PI, TAU, and Euler\'s Number.  It works with Factorials and it can represent a number as a percentage.'
+				description: 'Scientific: My Scientific Calculator is able to calculate just about anything you see on a normal Scientific Calculator.  It can handle all the trig finctions (including the inverses of the trig functions, the hyperbolic trig functions and their inverses).  It can also handle logrithms as well as the natural log.  It can work with Squar Roots, Cube Roots, and all other types of Roots you wish.  It supports the variables PI, TAU, and Euler\'s Number.  It works with Factorials and it can represent a number as a percentage.'
+			},
+			{
+				name: 'linear',
+				func: Linear,
+				description: 'Linear: My Linear Calculator is able intake a linear an only a linear expression / equation.  It would then reveal the linear expression in standard form and in y-intercept form.  It would also allow you to input an x value and get the corresponding y value;'
 			}
 		];
 		this.calcName = this.Calculators.map(x => x.name);
@@ -32,7 +41,7 @@ class Bot {
 		this.chosenCalculator;
 	}
 	intro() {
-		console.log(`Hi, my name is ${this.name}.\n\n${this.description}`);
+		Felix.print(`Hi, my name is ${this.name}.\n\n${this.description}`);
 	}
 	print(text) {
 		console.log(text);
@@ -74,10 +83,20 @@ class Bot {
 		this.examinedMath = str;
 	}
 	determineAction(enteredMath) { // Determin wether Basic or Quadratic
+		for (var func in this.calcName) {
+			func = this.calcName[func];
+			if (enteredMath.startsWith(func)) {
+				var index = this.calcName.indexOf(func);
+				this.chosenCalculator = this.calcFuncs[index];
+				var re = new RegExp(`${func}`, 'g');
+				enteredMath = enteredMath.replace(re, '');
+			} else {
+				this.chosenCalculator = this.defaultCalculator.func;
+			}
+		}
 		this.determined = enteredMath.replace(/ /g, '').toLowerCase();
 	}
 	revealSolution(solution) { // Print out Solution
-		console.log(solution);
 		return solution;
 	}
 	resetVariables() {
@@ -172,11 +191,9 @@ class calcSystem {
 			var index = mthArray.indexOf(symbol);
 			var numIndex = index - 1;
 			var prevNum = mthArray[numIndex];
-			console.log(prevNum);
 			if (clssArray[numIndex] == 'number' || clssArray[numIndex] == 'var') {
 				mthArray.splice(numIndex, 2, `${func}(${prevNum})`);
 			} else if (prevNum == ')') {
-				console.log(true);
 				var parVar = 1;
 				var bgTxt = [];
 				bgTxt.unshift(prevNum);
@@ -196,12 +213,9 @@ class calcSystem {
 				var choppedMath = this.chopMathString(mthStr);
 				mthArray = choppedMath.mathArray;
 				clssArray = choppedMath.clssArray;
-				console.log(mthArray);
-				console.log(clssArray);
 				if (clssArray[numIndex] == 'func' || clssArray[numIndex] == 'trig') {
 					bgTxt.unshift(prevNum);
 				} else {numIndex++;}
-				console.log(numIndex);
 				mthArray.splice(numIndex, bgTxt.length + 1, `${func}(${bgTxt.join('')})`);
 			}
 			var mthStr = mthArray.join('');
@@ -258,8 +272,6 @@ class calcSystem {
 		let mathString = percentCheck.mathString;
 		let mathArray = percentCheck.mathArray;
 		let clssArray = percentCheck.clssArray;
-		console.log(factorialCheck);
-		console.log(percentCheck);
 		this.configuredMath = mathString;
 	}
 	solveMath(math = this.configuredMath) { // Actually solve the math
@@ -288,7 +300,7 @@ function FelixCalculate() {
 	System.resetVariables();
 	User.inputMath();
 	Felix.determineAction(User.enteredMath);
-	Felix.defaultCalculator.func(Felix.determined);
+	Felix.chosenCalculator(Felix.determined);
 	endLine();
 	FelixCalculate();
 }
@@ -307,8 +319,66 @@ function Scientific(science) {
 	Felix.revealSolution(System.solution);
 }
 
+function Linear(linear) {
+	var string = linear.replace(/ /g, '');
+	//If it has an equal sighn, shift everything to the left side of the array
+	var array = string.includes('=') ? 
+	[string.split('=')[0]+'-'+'('+string.split('=')[1]+')', '0'] :
+	[string, '0'];
+
+	var side = {
+		left: algebra.parse(array[0]).simplify(),
+		right: algebra.parse(array[1]).simplify()
+	}
+	var equation = new Equation(side.left, side.right);
+	var variables = side.left.terms.map(x => x.variables[0].variable);
+	var coefficients = equation.lhs.terms.map(x => x.coefficients.toString());
+	var A = coefficients[0];
+	var B = coefficients[1];
+	var C = side.left.constants[0] * -1;
+	var x = variables[0];
+	var y = variables[1];
+	var m = (A * -1) / B;
+	var b = C/B;
+	var times = A < 0 ? -1 : 1;
+	var standard = equation;
+	standard.lhs = equation.lhs.add(C).multiply(times);
+	standard.rhs = equation.rhs.add(C).multiply(times);
+	var intercept = 'y = ' + equation.solveFor('y');
+	
+	var form = {
+		standard: standard.toString(),
+		intercept: intercept.toString()
+	}
+	function solve(value, m, b) {
+		var yValue = m*value + b;
+		return 'Your y value is ' + yValue + '\n' + 'The point is (' + value + ', ' + yValue + ')' ;
+	}
+	Felix.print();
+	Felix.print('Standard Form: ' + form.standard);
+	Felix.print('Y-intercept From: ' + form.intercept);
+	Felix.print('Slope: ' + m);
+	Felix.print('Y-intercept: ' + `(0, ${b})`);
+	Felix.print();
+	Felix.print('If you want to leave type "done".');
+	Felix.print('Otherwhise, if you want to find the value of y given x, supply me a value for x.');
+	Felix.print();
+	function asking(){ 
+		statement = prompt('x = ');
+		if (statement.toLowerCase() == 'done') {
+			endLine();
+			FelixCalculate();
+		} else {
+			Felix.print(solve(statement, m, b));
+			Felix.print();
+			asking();
+		}
+	}
+	asking();
+}
+
 function endLine() {
-	console.log('-------------------------------------\n\n')
+	Felix.print('-------------------------------------\n\n')
 }
 
 function setClss(arrays, array, numClss) {
