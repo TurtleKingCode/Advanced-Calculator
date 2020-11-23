@@ -5,7 +5,7 @@ Biweekly Coding Challenge 3: With the Help of Felix... You can get your math hom
 <br/><br/>
 # Reasons Why Felix and I Deserve 5 Bonus Points:
 1. Felix
-2. Basic Calculator
+2. Basic Calculator<br/>
 	a. Addition, Subtraction, Multiplication and Division
 3. Scientific Calculator<br/>
 	a. Trig Functions<br/>
