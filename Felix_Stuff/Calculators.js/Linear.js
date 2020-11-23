@@ -1,3 +1,7 @@
+const readline = require('readline-sync');
+var algebra = require('algebra.js');
+prompt = readline.question;
+
 function Linear(linear) {
 	var string = linear.replace(/ /g, '');
 	//If it has an equal sighn, shift everything to the left side of the array
@@ -55,3 +59,5 @@ function Linear(linear) {
 	}
 	asking();
 }
+
+module.exports = Linear;
