@@ -8,19 +8,19 @@ Biweekly Coding Challenge 3: With the Help of Felix... You can get your math hom
 2. Basic Calculator
 	a. Addition, Subtraction, Multiplication and Division
 3. Scientific Calculator
-	a. Trig Functions
-	b. Inverse of Trig Functions
-	c. Hyperbolic Trig Functions
-	d. Inverse of Hyperbolic Trig Functions
-	e. Pi and Euler's Number
-	f. Log and Natural Lot
-	g. Factorial
-	h. Absolute Value
-	i. Negation
-	j. Floor and Ceiling
-	k. Rounding
+	a. Trig Functions<br/>
+	b. Inverse of Trig Functions<br/>
+	c. Hyperbolic Trig Functions<br/>
+	d. Inverse of Hyperbolic Trig Functions<br/>
+	e. Pi and Euler's Number<br/>
+	f. Log and Natural Lot<br/>
+	g. Factorial<br/>
+	h. Absolute Value<br/>
+	i. Negation<br/>
+	j. Floor and Ceiling<br/>
+	k. Rounding<br/>
 4. Linear Calculator
-	a. Accepting linear equations/expressions
-	b. Outputing Standard Form and Y-intercept Form
-	c. Outputing Slope and y-intercept
-	d. Accepting X values and outputting Y values
+	a. Accepting linear equations/expressions<br/>
+	b. Outputing Standard Form and Y-intercept Form<br/>
+	c. Outputing Slope and y-intercept<br/>
+	d. Accepting X values and outputting Y values<br/>
