@@ -1,5 +1,5 @@
 const readline = require('readline-sync');
-var setTrigFuncs = require('./settup');
+var setTrigFuncs = require('./ScientificSetup');
 var radians = true;
 setTrigFuncs(radians);
 const algebra = require('algebra.js');
@@ -258,7 +258,7 @@ class calcSystem {
 		return choppedMath;
 	}
 	chopMathString(examinedMath) {
-		let str = examinedMath.replace(/\=/g, '').replace(/nthroot/g, 'root').replace(/nth_root/g, 'root');
+		let str = examinedMath.replace(/\=/g, '').replace(/nthroot/g, 'root').replace(/nth_root/g, 'root').toLowerCase();
 		var strList;
 		var clssList = [];
 		// clssList = Array(clssList);
