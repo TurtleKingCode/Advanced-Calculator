@@ -1,2 +1,2 @@
 language = "nodejs"
-run = "nodejs Felix_Stuff/Felix.js"
+run = "nodejs Felix_Stuff/Calculators/Time.js"
