@@ -5,7 +5,7 @@ function setup() {
 	e = Math.E;
 	sqrt = Math.sqrt;
 	cbrt = Math.cbrt;
-	root = Math.root; nthroot = root; nth_root = root
+	nthroot = Math.root;
 	factorial = Math.factorial;
 	percent = function(num, base = 100) {
 		return (num/base);

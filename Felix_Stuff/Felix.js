@@ -7,7 +7,6 @@ const Fraction = algebra.Fraction;
 const Expression = algebra.Expression;
 const Equation = algebra.Equation;
 
-const Scientific = require('./Calculators/Scientific.js')
 const Linear = require('./Calculators/Linear.js');
 
 
@@ -41,7 +40,7 @@ class Bot {
 		];
 		this.calcName = this.Calculators.map(x => x.name);
 		this.calcFuncs = this.Calculators.map(x => x.func);
-		this.defaultCalculator = this.Calculators[2];
+		this.defaultCalculator = this.Calculators[1];
 		this.chosenCalculator;
 	}
 	intro() {
@@ -54,7 +53,7 @@ class Bot {
 		this.print("By the way, by which title may I refer to you as?")
 		user.name = prompt("You can call me: ");
 	}
-	examineMath(mathString) { // Scan math for human errors
+	examineMath(mathString) {
 		var str = mathString.replace(/ /g, '').toLowerCase();
 		var math = false;
 		for (var s in str.split('')) {
@@ -86,7 +85,7 @@ class Bot {
 
 		this.examinedMath = str;
 	}
-	determineAction(enteredMath) { // Determin wether Basic or Quadratic
+	determineAction(enteredMath) {
 		for (var func in this.calcName) {
 			func = this.calcName[func];
 			if (enteredMath.startsWith(func)) {
@@ -96,12 +95,14 @@ class Bot {
 				enteredMath = enteredMath.replace(re, '');
 			} else {
 				this.chosenCalculator = this.defaultCalculator.func;
+				break;
 			}
 		}
 		this.determined = enteredMath.replace(/ /g, '').toLowerCase();
 	}
-	revealSolution(solution) { // Print out Solution
-		return solution;
+	revealSolution(solution) { 
+		this.print("Your Answer is: ");
+		console.log(solution);
 	}
 	resetVariables() {
 		this.examinedMath = undefined;
@@ -262,17 +263,9 @@ class calcSystem {
 		this.choppedMath = {mathString: str, mathArray: strList, clssArray: clssList};
 		return this.choppedMath;
 	}
-	configureMath(choppedMath) { // Set up math in a way that solveMath can handle
+	configureMath(choppedMath) {
 		let factorialCheck = this.backCheck('!', 'factorial', choppedMath.mathArray, choppedMath.clssArray);
 		let percentCheck = this.backCheck('%', 'percent', factorialCheck.mathArray, factorialCheck.clssArray);
-
-		/*
-		modifier
-		array
-		function name
-		---
-		final Array
-		*/
 		let mathString = percentCheck.mathString;
 		let mathArray = percentCheck.mathArray;
 		let clssArray = percentCheck.clssArray;
@@ -285,8 +278,6 @@ class calcSystem {
 		this.solution = undefined;
 		this.configuredMath = undefined;
 		this.choppedMath = undefined;
-	}
-	workMath() {
 	}
 }
 // ---------------------------
