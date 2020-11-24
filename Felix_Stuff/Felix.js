@@ -41,6 +41,11 @@ class Bot {
 				name: 'quad',
 				func: Quadratic,
 				description: 'Quadratic: My Quadratic Calculator is able to intake a quadratic AND only a quadratic expression / equation in the form ax^2 + bx + c = 0 or a(x - h)^2 + k = 0.  And it would geive you all the information you can imagine to need including the axis of symmetry and vertex and more.  It would also allow you to input an x value and get the corresponding y value and vice versa.'
+			},
+			{
+				name: 'default',
+				func: Default,
+				description: 'Default: My Default Function allows you to switch the default calculator'
 			}
 		];
 		this.calcName = this.Calculators.map(x => x.name);
@@ -328,6 +333,24 @@ function Scientific(science) {
 	Felix.revealSolution(System.solution);
 }
 
+function Default(theFault) {
+	theFault = theFault.replace(/ /g, '').replace(/=/g, '').toLowerCase();
+	var defaultCalculator;
+	for (name in Felix.calcName) {
+		if (theFault == Felix.calcName[name] && theFault !== 'default') {
+			Felix.defaultCalculator = Felix.Calculators[name];
+			console.log('The Switch is SuccessFul.');
+			console.log();
+			return;
+		} else {
+			continue;
+		}
+	}
+	console.log('The Switch was UnSuccessful.');
+	console.log();
+	return;
+}
+
 function endLine() {
 	Felix.print('-------------------------------------\n\n')
 }
@@ -348,11 +371,6 @@ function setClss(arrays, array, numClss) {
 		}
 	}
 	return clss;
-}
-
-module.exports = {
-	Calculate: FelixCalculate,
-	endLine: endLine
 }
 
 // -------------------------
