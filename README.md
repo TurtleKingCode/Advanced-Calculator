@@ -45,24 +45,24 @@ The tag is the string you put infront of your math to tell Felix what Calculator
 If you have ever used Discord Bots, you sort of understand where I'm coming from.<br/>
 Now... Here are the Tags:
 1. Basic: 'basic'<br/>
-	a. Example: basic (8 - 4) * 10<br/>
-	b. Example: basic 3 + 3 * 10
+	a. `Example: basic (8 - 4) * 10`<br/>
+	b. `Example: basic 3 + 3 * 10`
 2. Scientific: 'sci'<br/>
-	a. Example: sci cos(pi) + sin(tau)<br/>
-	b. Example: sci (8 + 4)/10<br/>
-	c. Example: sci root(4, 256) --> This means the Fourth Root of 256
+	a. `Example: sci cos(pi) + sin(tau)`<br/>
+	b. `Example: sci (8 + 4)/10`<br/>
+	c. `Example: sci root(4, 256) --> This means the Fourth Root of 256
 3. Linear: 'linear'<br/>
-	a. Example: linear 3x + 2y = 10<br/>
-	b. Example: linear y = 10x - 30<br/>
-	c. Example: linear 0.5y - 10x
+	a. `Example: linear 3x + 2y = 10`<br/>
+	b. `Example: linear y = 10x - 30`<br/>
+	c. `Example: linear 0.5y - 10x`
 4. Quadratic: 'quad'<br/>
-	a. Example: quad 3x^2 + 10x - 15 = 0<br/>
-	b. Example: quad 3(x - 19)^2 - 10<br/>
+	a. `Example: quad 3x^2 + 10x - 15 = 0`<br/>
+	b. `Example: quad 3(x - 19)^2 - 10`<br/>
 
 Now, the Scientific Calculater is the default setting so if you want to use that one, you actually don't need a tag infront of it... But for the rest, you do.<br/><br/>
 However, If you want to change the default calculator... What you do is use the tag 'default' and then type the tag of the calculator you want to switch default to.<br/>
-Example: default quad<br/>
-Example: default linear<br/>
-Example: default basic<br/>
+`Example: default quad`<br/>
+`Example: default linear`<br/>
+`Example: default basic`<br/>
 
 Keep in mind that you haave to be very careful how you input your Tags and your Math so that Felix can read it.  One mistake and you would find your screen filled with an error message.<br/>
