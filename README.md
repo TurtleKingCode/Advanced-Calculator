@@ -60,4 +60,9 @@ Now... Here are the Tags:
 	b. Example: quad 3(x - 19)^2 - 10<br/>
 
 Now, the Scientific Calculater is the default setting so if you want to use that one, you actually don't need a tag infront of it... But for the rest, you do.<br/><br/>
+However, If you want to change the default calculator... What you do is use the tag 'default' and then type the tag of the calculator you want to switch default to.<br/>
+Example: default quad<br/>
+Example: default linear<br/>
+Example: default basic<br/>
+
 Keep in mind that you haave to be very careful how you input your Tags and your Math so that Felix can read it.  One mistake and you would find your screen filled with an error message.<br/>
