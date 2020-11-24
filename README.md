@@ -34,7 +34,7 @@ Biweekly Coding Challenge 3: With the Help of Felix... You can get your math hom
 
 # How to Use my Calculator
 My Advance Calculater has 4 differe Calculators in it and I know this is rushed, but this is where you understand how to use it
-### Tags
+## Tags
 My Advance Calculator has 4 Different types of Calculators inside of it...
 1. Basic
 2. Scientific
@@ -65,4 +65,4 @@ However, If you want to change the default calculator... What you do is use the 
 `Example: default linear`<br/>
 `Example: default basic`<br/>
 
-Keep in mind that you haave to be very careful how you input your Tags and your Math so that Felix can read it.  One mistake and you would find your screen filled with an error message.<br/>
+Keep in mind that you have to be very careful how you input your Tags and your Math so that Felix can read it.  Felix already has a lot in his hads reading your math and helping you with your Math homework.  The least you could do is be considerate and make it easier on him to read.<br/>
