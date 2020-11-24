@@ -37,7 +37,7 @@ function Linear(linear) {
 	var standard = equation;
 	standard.lhs = equation.lhs.add(C).multiply(times);
 	standard.rhs = equation.rhs.add(C).multiply(times);
-	var intercept = 'y = ' + equation.solveFor('y');
+	var intercept = 'y = ' + equation.solveFor(y);
 	var xVal = true;
 	if (C == '0') {standard.lhs = standard.lhs.subtract(C);}
 	var form = {

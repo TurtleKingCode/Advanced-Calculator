@@ -8,7 +8,7 @@ const Expression = algebra.Expression;
 const Equation = algebra.Equation;
 
 const Linear = require('./Calculators/Linear.js');
-
+const Quadratic = require('./Calculators/Quadratic.js');
 
 class Bot {
 	constructor(name, description) {
@@ -30,16 +30,22 @@ class Bot {
 			{
 				name: 'sci',
 				func: Scientific,
-				description: 'Scientific: My Scientific Calculator is able to calculate just about anything you see on a normal Scientific Calculator.  It can handle all the trig finctions (including the inverses of the trig functions, the hyperbolic trig functions and their inverses).  It can also handle logrithms as well as the natural log.  It can work with Squar Roots, Cube Roots, and all other types of Roots you wish.  It supports the variables PI, TAU, and Euler\'s Number.  It works with Factorials and it can represent a number as a percentage.'
+				description: 'Scientific: My Scientific Calculator is able to calculate just about anything you see on a normal Scientific Calculator.  It can handle all the trig finctions (including the inverses of the trig functions, the hyperbolic trig functions and their inverses).  It can also handle logrithms as well as the natural log.  It can work with Squar Roots, Cube Roots, and all other types of Roots you wish.  It supports the variables PI, TAU, and Euler\'s Number.  It works with Factorials and it can represent a number as a percentage Ex [3% = 0.03]. Go to my ReadMe Page to see more.'
 			},
 			{
 				name: 'linear',
 				func: Linear,
-				description: 'Linear: My Linear Calculator is able intake a linear an only a linear expression / equation.  It would then reveal the linear expression in standard form and in y-intercept form.  It would also allow you to input an x value and get the corresponding y value;'
+				description: 'Linear: My Linear Calculator is able intake a linear and only a linear expression / equation.  It would then reveal the linear expression in standard form and in y-intercept form.  It would also allow you to input an x value and get the corresponding y value and vice versa.'
+			},
+			{
+				name: 'quad',
+				func: Quadratic,
+				description: 'Quadratic: My Quadratic Calculator is able to intake a quadratic AND only a quadratic expression / equation in the form ax^2 + bx + c = 0 or a(x - h)^2 + k = 0.  And it would geive you all the information you can imagine to need including the axis of symmetry and vertex and more.  It would also allow you to input an x value and get the corresponding y value and vice versa.'
 			}
 		];
 		this.calcName = this.Calculators.map(x => x.name);
 		this.calcFuncs = this.Calculators.map(x => x.func);
+		this.calcDescribe = this.Calculators.map(x => x.description);
 		this.defaultCalculator = this.Calculators[1];
 		this.chosenCalculator;
 	}
@@ -86,10 +92,11 @@ class Bot {
 		this.examinedMath = str;
 	}
 	determineAction(enteredMath) {
+		var index;
 		for (var func in this.calcName) {
 			func = this.calcName[func];
 			if (enteredMath.startsWith(func)) {
-				var index = this.calcName.indexOf(func);
+				index = this.calcName.indexOf(func);
 				this.chosenCalculator = this.calcFuncs[index];
 				var re = new RegExp(`${func}`, 'g');
 				enteredMath = enteredMath.replace(re, '');
