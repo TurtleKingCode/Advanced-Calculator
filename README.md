@@ -66,21 +66,21 @@ However, If you want to change the default calculator... What you do is use the 
 `Example: default basic`<br/>
 
 Keep in mind that you have to be very careful how you input your Tags and your Math so that Felix can read it.  Felix already has a lot in his hads reading your math and helping you with your Math homework.  The least you could do is be considerate and make it easier on him to read.<br/>
-##Scientific Calculator
+## Scientific Calculator
 My Scientific Calculator is my most Advanced and Complex of all the Calculators I built here.<br/>
 While all of the others took no more than a day and a half to build... This one took a whole 7 days... And as such deserves a deeper description thatn the others...<br/><br/>
-###Trig Functions
+### Trig Functions
 My Scientific Calculator has 12 Trigonometric Functions.  Those include:
 1. The Three main `sin`, `cos`, `tan`
 2. Their inverses `asin`, `acos`, `atan`
 3. The Hyperbolics `sinh`, `cosh`, `tanh`
 4. And Their inverses `asinh`, `acosh`, `atanh`
-###Using Trig Functions
+### Using Trig Functions
 The syntax for these trig functions is as such:</br>
 Example: `cos(pi)`</br>
 Example: `sin(tau)`</br>
 Example: `tan(10 + 10 - 20)`</br>
-###Degrees or Radians
+### Degrees or Radians
 My Scientific Calculator accepts Degrees and Radians... But you have to set it up youself.</br>
 The Default Angle Setting is Radians.  You can change that using the `angle` tag and following up with the name of the angle setting.</br>
 This is very very similar to the how you use the `default` tag.</br>
