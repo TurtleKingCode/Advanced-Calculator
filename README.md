@@ -4,10 +4,10 @@ Biweekly Coding Challenge 3: With the Help of Felix... You can get your math hom
 [link to Repl Project!](https://repl.it/@FranklinOguama/Advanced-Calculator#README.md)
 <br/><br/>
 ### Reasons Why Felix and I Deserve 5 Bonus Points:
-1. Felix
-2. Basic Calculator<br/>
+**1. Felix**
+**2. Basic Calculator<br/>**
 	a. Addition, Subtraction, Multiplication and Division
-3. Scientific Calculator<br/>
+**3. Scientific Calculator<br/>**
 	a. Trig Functions<br/>
 	b. Inverse of Trig Functions<br/>
 	c. Hyperbolic Trig Functions<br/>
@@ -19,13 +19,13 @@ Biweekly Coding Challenge 3: With the Help of Felix... You can get your math hom
 	i. Negation<br/>
 	j. Floor and Ceiling<br/>
 	k. Rounding
-4. Linear Calculator<br/>
+**4. Linear Calculator<br/>**
 	a. Accepting linear equations/expressions<br/>
 	b. Outputing Standard Form and Y-intercept Form<br/>
 	c. Outputing Slope and y-intercept<br/>
 	d. Accepting X values and outputting Y values<br/>
 	e. Accepting Y values and outputting X values
-5. Quadratic Calculator<br/>
+**5. Quadratic Calculator<br/>**
 	a. Accepting Quadratic expressions<br/>
 	b. Outputting Standard Form and Vertex Form<br/>
 	c. Outputting Axis of Symetry<br/>
