@@ -1,5 +1,7 @@
 const readline = require('readline-sync');
-const setTrigFuncs = require('./settup');
+var setTrigFuncs = require('./settup');
+var radians = true;
+setTrigFuncs(radians);
 const algebra = require('algebra.js');
 prompt = readline.question;
 
@@ -46,6 +48,11 @@ class Bot {
 				name: 'default',
 				func: Default,
 				description: 'Default: My Default Function allows you to switch the default calculator'
+			},
+			{
+				name: 'angle',
+				func: Angle,
+				description: 'Angle: My Angle Funciton allows you to swithc the Angle Settings'
 			}
 		];
 		this.calcName = this.Calculators.map(x => x.name);
@@ -353,6 +360,31 @@ function Default(theFault) {
 	return;
 }
 
+function Angle(angle) {
+	angle = angle.replace(/ /g, '').replace(/=/g, '').toLowerCase();
+	if (angle.includes('degree')) {
+		radians = false;
+		setTrigFuncs(radians);
+		console.log();
+		console.log('The AngleSwitch was SuccessFul.');
+		console.log();
+		return;
+	} else if (angle.includes('radian')) {
+		radians = true;
+		setTrigFuncs(radians);
+		console.log();
+		console.log('The AngleSwitch was SuccessFul.');
+		console.log();
+		return;
+	} else {
+		console.log();
+		console.log('The AngleSwitch was UnSuccessFul.');
+		console.log();
+		return;
+	}
+}
+
+
 function endLine() {
 	Felix.print('-------------------------------------\n\n')
 }
@@ -390,4 +422,3 @@ Felix.print(
 );
 
 FelixCalculate();
-

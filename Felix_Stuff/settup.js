@@ -1,5 +1,4 @@
-function setup() {
-	radians = true;
+function setup(radians) {
 	pi = Math.PI;
 	tau = Math.PI * 2;
 	e = Math.E;
@@ -104,4 +103,4 @@ Math.factorial = function(x) {
 Math.root = function(base, val) {
 	return Math.pow(val, 1/(base));
 }
-module.exports = setup();
+module.exports = setup;
