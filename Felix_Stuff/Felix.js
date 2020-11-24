@@ -339,6 +339,7 @@ function Default(theFault) {
 	for (name in Felix.calcName) {
 		if (theFault == Felix.calcName[name] && theFault !== 'default') {
 			Felix.defaultCalculator = Felix.Calculators[name];
+			console.log();
 			console.log('The Switch is SuccessFul.');
 			console.log();
 			return;
@@ -346,6 +347,7 @@ function Default(theFault) {
 			continue;
 		}
 	}
+	console.log();
 	console.log('The Switch was UnSuccessful.');
 	console.log();
 	return;
