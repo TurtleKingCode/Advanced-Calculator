@@ -18,7 +18,7 @@ function setup(radians) {
 	trunc = Math.trunc; 
 	log = function (base, val = undefined) {
 		if (val == undefined) {
-			return Math.log(base);
+			return Math.log(base) / Math.log(10);
 			} else {
 				return Math.log(val) / Math.log(base);
 			}
