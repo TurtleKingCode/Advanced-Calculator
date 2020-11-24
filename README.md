@@ -45,17 +45,17 @@ The tag is the string you put infront of your math to tell Felix what Calculator
 If you have ever used Discord Bots, you sort of understand where I'm coming from.<br/>
 Now... Here are the Tags:
 1. Basic: 'basic'
-	a. Example: basic (8 - 4) * 10
+	a. Example: basic (8 - 4) * 10<br/>
 	b. Example: basic 3 + 3 * 10
 2. Scientific: 'sci'
-	a. Example: sci cos(pi) + sin(tau)
-	b. Example: sci (8 + 4)/10
+	a. Example: sci cos(pi) + sin(tau)<br/>
+	b. Example: sci (8 + 4)/10<br/>
 	c. Example: sci root(4, 256) --> This means the Fourth Root of 256
 3. Linear: 'linear'
-	a. Example: linear 3x + 2y = 10
-	b. Example: linear y = 10x - 30
+	a. Example: linear 3x + 2y = 10<br/>
+	b. Example: linear y = 10x - 30<br/>
 	c. Example: linear 0.5y - 10x
 4. Quadratic: 'quad'
-	a. Example: quad 3x^2 + 10x - 15 = 0
+	a. Example: quad 3x^2 + 10x - 15 = 0<br/>
 	b. Example: quad 3(x - 19)^2 - 10
 Keep in mind that you haave to be very careful how you input your Tags and your Math so that Felix can read it.  One mistake and you would find your screen filled with an error message.<br/>
