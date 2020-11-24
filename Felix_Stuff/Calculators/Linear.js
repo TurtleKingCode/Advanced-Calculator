@@ -17,12 +17,10 @@ function print(val) {
 function Linear(linear) {
 	var string = linear.replace(/ /g, '');
 	var array = string.includes('=') ? [string.split('=')[0]+'-'+'('+string.split('=')[1]+')', '0'] : [string, '0'];
-	console.log(array);
 	var side = {
 		left: algebra.parse(array[0]).simplify(),
 		right: algebra.parse(array[1]).simplify()
 	}
-	console.log(side.left.toString());
 	var equation = new Equation(side.left, side.right);
 	var variables = side.left.terms.map(x => x.variables[0].variable);
 	var coefficients = equation.lhs.terms.map(x => x.coefficients.toString());

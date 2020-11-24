@@ -92,18 +92,24 @@ class Bot {
 		this.examinedMath = str;
 	}
 	determineAction(enteredMath) {
-		var index;
+		var found = undefined;
 		for (var func in this.calcName) {
 			func = this.calcName[func];
 			if (enteredMath.startsWith(func)) {
-				index = this.calcName.indexOf(func);
-				this.chosenCalculator = this.calcFuncs[index];
-				var re = new RegExp(`${func}`, 'g');
-				enteredMath = enteredMath.replace(re, '');
+				found = func
 			} else {
-				this.chosenCalculator = this.defaultCalculator.func;
-				break;
+				// this.chosenCalculator = this.defaultCalculator.func;
+				// break;
+				continue;
 			}
+		}
+		if (found !== undefined) {
+			var index = this.calcName.indexOf(found);
+				this.chosenCalculator = this.calcFuncs[index];
+				var re = new RegExp(`${found}`, 'g');
+				enteredMath = enteredMath.replace(re, '');
+		} else {
+			this.chosenCalculator = this.defaultCalculator.func;
 		}
 		this.determined = enteredMath.replace(/ /g, '').toLowerCase();
 	}
@@ -290,7 +296,8 @@ class calcSystem {
 // ---------------------------
 
 // Setting up the three important players in this game
-const Felix = new Bot('Felix', 'I\'m Clyde\'s more soffisticated alter-ego.');
+const Felix = new Bot('Felix', `I\'m Clyde\'s more sophisticated alter-ego.
+Where Clyde is the game playing type, I'm the Math and Smarts type.`);
 const User = new calcUser();
 const System = new calcSystem();
 
@@ -350,16 +357,16 @@ module.exports = {
 
 // -------------------------
 
-/* Felix.intro();
+ Felix.intro();
 Felix.askName(User);
 Felix.print(
-	`\nWell hello ${User.name},
+	`\nWell, hello ${User.name},
 It's a Pleasure to meet you.\n
 And let me welcome you to Felix's Mega-Calculator!!
-The One Calculator You'd Need for Literally ALL of your Math Homework.`); */
+The One Calculator You'd Need for Literally ALL of your Math Homework.\n`); 
 
 Felix.print(
-	'The Calculator is on...\n'
+	`Please!!! Check out my ReadMe page before using!!!\nThe Calculator is on...\n`
 );
 
 FelixCalculate();
