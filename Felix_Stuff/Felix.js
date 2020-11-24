@@ -272,7 +272,8 @@ class calcSystem {
 							.replace(/!/g, ' ! ')
 							.replace(/\(/g, ' ( ')
 							.replace(/\)/g, ' ) ')
-							.replace(/,/g, ' , ');
+							.replace(/,/g, ' , ')
+							.replace(/\*  \*/g, ' ** ');
 		var termList = this.trig.txt.concat(this.funcs.txt);
 		for (var thn in termList) {
 			thn = termList[thn];
