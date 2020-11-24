@@ -57,5 +57,7 @@ Now... Here are the Tags:
 	c. Example: linear 0.5y - 10x
 4. Quadratic: 'quad'<br/>
 	a. Example: quad 3x^2 + 10x - 15 = 0<br/>
-	b. Example: quad 3(x - 19)^2 - 10
+	b. Example: quad 3(x - 19)^2 - 10<br/>
+
+Now, the Scientific Calculater is the default setting so if you want to use that one, you actually don't need a tag infront of it... But for the rest, you do.<br/><br/>
 Keep in mind that you haave to be very careful how you input your Tags and your Math so that Felix can read it.  One mistake and you would find your screen filled with an error message.<br/>
