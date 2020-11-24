@@ -86,3 +86,13 @@ The Default Angle Setting is Radians.  You can change that using the `angle` tag
 This is very very similar to the how you use the `default` tag.</br>
 Example: `angle degrees`</br>
 Example: `angle radians`</br>
+### Constants
+I have a few Constants in use in my Scientific Calculator... Those include
+`pi`, `e`, `tau`</br>
+As for how to use them... It's super easy...</br>
+Example: `pi + tau - e^2 - cos(pi)`
+### Operators
+My Calculator accepts 8 operators... Those being `+`, `-`, `*`, `/`.</br>
+It also Accepts factorial `!`, percentage `%`, and exponents in two forms `^` and `**` (for those of us programmers).</br>
+Now, for the Sake of You programmers out there... I know y'all are sad to see me use the `%` for percentage... Don't worry, You can still acces modules.  All you've got to do is use `mod`.</br>
+Example: `3 mod 2` --> NO PARENTHESES.  `mod` is an operator not a function.
