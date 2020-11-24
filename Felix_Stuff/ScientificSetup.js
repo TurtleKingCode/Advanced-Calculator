@@ -6,14 +6,17 @@ function setup(radians) {
 	cbrt = Math.cbrt;
 	nthroot = Math.root;
 	factorial = Math.factorial;
-	percent = function(num, base = 100) {
-		return (num/base);
+	percent = function(num) {
+		return (num/100);
 	}
 	abs = Math.abs;
 	mod = function() {return '%'};
 	ceil = Math.ceil;
 	floor = Math.floor;
-	round = Math.round;
+	round = function(val, places = 0) {
+		var times = 10**places;
+		return Math.round(val * times) / times;
+	}
 	negate = function(x) {return -x};
 	trunc = Math.trunc; 
 	log = function (base, val = undefined) {
