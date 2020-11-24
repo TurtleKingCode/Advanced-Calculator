@@ -64,8 +64,17 @@ However, If you want to change the default calculator... What you do is use the 
 `Example: default quad`<br/>
 `Example: default linear`<br/>
 `Example: default basic`<br/>
-
+## Keep in Mind
 Keep in mind that you have to be very careful how you input your Tags and your Math so that Felix can read it.  Felix already has a lot in his hads reading your math and helping you with your Math homework.  The least you could do is be considerate and make it easier on him to read.<br/>
+1. Basic Calculator: Make sure what you give it is what you would give a basic calculator...  This calculator also accepts the use of parentheses and exponents.  But beyond that it's still a Basic Calculator.<br/>
+2. Linear Calculator: Make sure what you give it is a linear equation.  Meaning It has the variables y and x and that none of them are raised to some obscure number.  If I graph what you give it, it should result in a stright line.  Also don't try subtracting a negative number.  (Example: `y - -x`).  Symplify that or else you mess up Felix's innocent self.  Once you start using the Calculator, the instructions I placed inside there should suffice as guidence.
+3. Quadratic Calculator: Make sure what you give is a quadratic equation.  Unlike the Linear Calculator, I only accept the variable x.  I don't want to see y anywhere.  Don't even act cool and use `f(x)`.  Because that isn't cool when you get an error report.  All the other rules above for the Linear Calculator also apply.  Here is what my Quadratic Calculator accepts as input.<br/>
+	a. `x^2`
+	b. `x^2 + 3x = 0`
+	c. `x^2 + 3x + 4`
+	d. `x^2 + 3x + 4 = 10`
+	e. `3x^2 + 3x + 10x - 4 = 50 - 2x^2 + x`
+	(Notice how there is no `y` in there... That's literally all I want... No other variables)
 ## Scientific Calculator
 My Scientific Calculator is my most Advanced and Complex of all the Calculators I built here.<br/>
 While all of the others took no more than a day and a half to build... This one took a whole 7 days... And as such deserves a deeper description thatn the others...<br/><br/>
@@ -95,4 +104,18 @@ Example: `pi + tau - e^2 - cos(pi)`
 My Calculator accepts 8 operators... Those being `+`, `-`, `*`, `/`.</br>
 It also Accepts factorial `!`, percentage `%`, and exponents in two forms `^` and `**` (for those of us programmers).</br>
 Now, for the Sake of You programmers out there... I know y'all are sad to see me use the `%` for percentage... Don't worry, You can still acces modules.  All you've got to do is use `mod`.</br>
-Example: `3 mod 2` --> NO PARENTHESES.  `mod` is an operator not a function.
+Example: `3 mod 2` --> NO PARENTHESES.  `mod` is an operator not a function.  Treat it like you would the plus and minus sign.
+### Functions
+I'm really really sorry that this ended up being supper long and tedius.  However, I take this very seriously and I would want to make sure you understand exactly how to use this Calcualator<br/>
+I promice you this is the last one...<br/>
+I have several Functions in my Scientific Calculator.  Those include<br/>
+One parameter: `ln`, `sqrt`, `cbrt`, `abs`, `ceil`, `floor`, `negate`, `trunc`<br/>
+Two parameters: `factorial`, `root`, `log`, `percent`, `round`<br/><br/>
+All of these functions work very similarly to the Trigonometric Functions above.<br/><br/>
+Now, I will more deeply explain these...<br/><br/><br/>
+`abs`: returns the absolute value of the number ->`abs(-10)`<br/>
+`ln`: returns the natural log of the number `ln(100)`<br/>
+`sqrt` and `cbrt`: returns the square root and cube root respectively<br/>
+`ceil` and `floor`: returns the ceiling and the floor of a number<br/>
+`negate`: returns the opposite of a number (Example: `negate(3)` results in -3 while `negate(-3)` results in 3)<br/>
+`trunc`: removes everything after the decimal point (Example: `trunc(3.121)` results in just 3)
